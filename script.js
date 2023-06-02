@@ -1,4 +1,4 @@
-// Retrieve todo list from local storage
+
 function getTodos() {
     let todos = [];
     const todosString = localStorage.getItem('todos');
@@ -8,12 +8,10 @@ function getTodos() {
     return todos;
   }
   
-  // Save todo list to local storage
   function saveTodos(todos) {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
   
-  // Render todos on the page
   function renderTodos() {
     const todoList = document.getElementById('todo-list');
     todoList.innerHTML = '';
@@ -29,14 +27,12 @@ function getTodos() {
       todoList.appendChild(li);
     });
   
-    // Attach event listeners to delete buttons
     const deleteButtons = document.querySelectorAll('.delete-btn');
     deleteButtons.forEach((button) => {
       button.addEventListener('click', deleteTodo);
     });
   }
   
-  // Add a new todo
   function addTodo() {
     const todoInput = document.getElementById('todo-input');
     const todo = todoInput.value.trim();
@@ -50,7 +46,6 @@ function getTodos() {
     }
   }
   
-  // Delete a todo
   function deleteTodo() {
     const index = parseInt(this.dataset.index);
     const todos = getTodos();
@@ -59,13 +54,11 @@ function getTodos() {
     renderTodos();
   }
   
-  // Delete all todos
   function deleteAllTodos() {
     localStorage.removeItem('todos');
     renderTodos();
   }
   
-  // Attach event listeners to form and delete all button
   document.getElementById('todo-form').addEventListener('submit', (e) => {
     e.preventDefault();
     addTodo();
@@ -73,6 +66,5 @@ function getTodos() {
   
   document.getElementById('delete-all').addEventListener('click', deleteAllTodos);
   
-  // Initial rendering
   renderTodos();
   
