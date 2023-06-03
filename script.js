@@ -1,7 +1,7 @@
 
 function getTodos() {
-    let todos = [];
-    const todosString = localStorage.getItem('todos');
+    var todos = [];
+    var todosString = localStorage.getItem('todos');
     if (todosString) {
       todos = JSON.parse(todosString);
     }
@@ -13,13 +13,13 @@ function getTodos() {
   }
   
   function renderTodos() {
-    const todoList = document.getElementById('todo-list');
+    var todoList = document.getElementById('todo-list');
     todoList.innerHTML = '';
   
-    const todos = getTodos();
+    var todos = getTodos();
   
     todos.forEach((todo, index) => {
-      const li = document.createElement('li');
+      var li = document.createElement('li');
       li.innerHTML = `
         <span>${todo}</span>
         <button class="delete-btn" data-index="${index}">Delete</button>
@@ -27,18 +27,18 @@ function getTodos() {
       todoList.appendChild(li);
     });
   
-    const deleteButtons = document.querySelectorAll('.delete-btn');
+    var deleteButtons = document.querySelectorAll('.delete-btn');
     deleteButtons.forEach((button) => {
       button.addEventListener('click', deleteTodo);
     });
   }
   
   function addTodo() {
-    const todoInput = document.getElementById('todo-input');
-    const todo = todoInput.value.trim();
+    var todoInput = document.getElementById('todo-input');
+    var todo = todoInput.value.trim();
   
     if (todo !== '') {
-      const todos = getTodos();
+      var todos = getTodos();
       todos.push(todo);
       saveTodos(todos);
       renderTodos();
@@ -47,8 +47,8 @@ function getTodos() {
   }
   
   function deleteTodo() {
-    const index = parseInt(this.dataset.index);
-    const todos = getTodos();
+    var index = parseInt(this.dataset.index);
+    var todos = getTodos();
     todos.splice(index, 1);
     saveTodos(todos);
     renderTodos();
